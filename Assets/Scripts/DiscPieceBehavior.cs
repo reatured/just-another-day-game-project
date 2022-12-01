@@ -12,11 +12,14 @@ public class DiscPieceBehavior : MonoBehaviour
     //for rotation====
     private Vector3 originalDirection;
     public Mesh objMesh;
-    public GameObject t_cubeObj;
-    [Range(-180, 180)]
-    public float t_rotationAngle = 0;
-    private GameObject t_duplicatedSphere; 
 
+    //[Range(-180, 180)]
+    //public float t_rotationAngle = 0;
+    [Space(10)]
+
+    public GameObject t_cubeObj;
+    private GameObject t_duplicatedSphere;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,11 +46,14 @@ public class DiscPieceBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        selectState = isSelected();
+        if (!dragState)
+        {
+            selectState = isSelected();
+        }
+        
         
 
-        checkDragState();
+        checkDragState(); //turn the drag state on and off..
         changeColor(selectState, dragState);
 
         switch (selectState)
@@ -59,7 +65,7 @@ public class DiscPieceBehavior : MonoBehaviour
                 }
                 else
                 {
-                    getDragged(); 
+                    
                 }
                
                 break;
@@ -69,11 +75,32 @@ public class DiscPieceBehavior : MonoBehaviour
  
                 break;
         }
+
+        if (dragState)
+        {
+            onDragging();   
+        }
     }
-    void getDragged()
+
+    void onDragEnter()
     {
-        Debug.Log(offset);
     }
+
+    void onDragging()
+    {
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float enter = 0.0f; 
+        if(hit_plane.Raycast(ray, out enter))
+        {
+            transform.position = ray.GetPoint(enter) + offset;
+        }
+    }
+
+    void onDragEnd()
+    {
+        walkSpeed *= 0.8f;
+    }
+
 
     void checkDragState()
     {
@@ -81,22 +108,35 @@ public class DiscPieceBehavior : MonoBehaviour
         {
             if (selectState)
             {
-                dragState = true; 
+                if (!dragState)
+                {
+                    dragState = true;
+                    onDragEnter();
+                }
+                
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
-            dragState = false; 
+            if (dragState)
+            {
+                dragState = false;
+                onDragEnd();
+            }
+            
         }
     }
 
+    [Space(10)]
     public float walkSpeed = 0; 
     public void randomWalk()
     {
         transform.Translate(originalDirection * walkSpeed * Time.deltaTime, Space.World);
+
     }
 
-    public Material originalMateiral, selectedMaterial, dragMaterial; 
+    private Material originalMateiral;
+    public Material selectedMaterial, dragMaterial; 
     void changeColor(bool selected, bool dragged)
     {
         GetComponent<MeshRenderer>().material = selected? selectedMaterial : originalMateiral;
@@ -108,8 +148,8 @@ public class DiscPieceBehavior : MonoBehaviour
 
     Ray ray;
     RaycastHit hit;
-    public int ignoredLayerMask;
     private Vector3 offset = Vector3.zero;
+    public Plane hit_plane; 
     bool isSelected()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -118,7 +158,9 @@ public class DiscPieceBehavior : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Vector3 impactPoint = hit.point;
-            impactPoint.z = hit.collider.gameObject.transform.position.z;
+            //impactPoint.z = hit.collider.gameObject.transform.position.z;
+
+            hit_plane = new Plane(-Vector3.forward, impactPoint);
             offset = hit.collider.gameObject.transform.position - impactPoint;
 
             if (GameObject.ReferenceEquals(hit.collider.gameObject, this.gameObject))
@@ -131,8 +173,8 @@ public class DiscPieceBehavior : MonoBehaviour
     }
 
     //--Not used-----
-    [Range(0, 1000)]
-    public int vertexIndex = 0; 
+    //[Range(0, 1000)]
+    private int vertexIndex = 0;
     void debugVertex()
     {
         vertexIndex = Mathf.Clamp(vertexIndex, 0, objMesh.vertexCount-1);
@@ -149,10 +191,5 @@ public class DiscPieceBehavior : MonoBehaviour
 
         Debug.Log(rotationAngle);
         transform.localRotation = Quaternion.Euler(-90, 0, rotationAngle);
-
-
     }
-
-
-    
 }
