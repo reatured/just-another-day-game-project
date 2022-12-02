@@ -37,8 +37,8 @@ public class DiscPieceBehavior : MonoBehaviour
         originalDirection = transform.TransformPoint(objMesh.vertices[48]) - parent.transform.position;
 
         //testing Script --
-        Vector3 vertexPos = transform.TransformPoint(objMesh.vertices[48]);
-        t_duplicatedSphere = Instantiate(t_cubeObj, vertexPos, Quaternion.identity);
+        //Vector3 vertexPos = transform.TransformPoint(objMesh.vertices[48]);
+        //t_duplicatedSphere = Instantiate(t_cubeObj, vertexPos, Quaternion.identity);
 
 
     }
@@ -84,6 +84,7 @@ public class DiscPieceBehavior : MonoBehaviour
 
     void onDragEnter()
     {
+
     }
 
     void onDragging()
@@ -98,7 +99,7 @@ public class DiscPieceBehavior : MonoBehaviour
 
     void onDragEnd()
     {
-        walkSpeed *= 0.8f;
+ 
     }
 
 
@@ -131,7 +132,7 @@ public class DiscPieceBehavior : MonoBehaviour
     public float walkSpeed = 0; 
     public void randomWalk()
     {
-        transform.Translate(originalDirection * walkSpeed * Time.deltaTime, Space.World);
+        //transform.Translate(originalDirection * walkSpeed * Time.deltaTime, Space.World);
 
     }
 
@@ -160,7 +161,7 @@ public class DiscPieceBehavior : MonoBehaviour
             Vector3 impactPoint = hit.point;
             //impactPoint.z = hit.collider.gameObject.transform.position.z;
 
-            hit_plane = new Plane(-Vector3.forward, impactPoint);
+            hit_plane = new Plane(Vector3.up, impactPoint);
             offset = hit.collider.gameObject.transform.position - impactPoint;
 
             if (GameObject.ReferenceEquals(hit.collider.gameObject, this.gameObject))

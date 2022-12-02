@@ -9,7 +9,7 @@ public class HandBehavior : MonoBehaviour
     void Start()
     {
         Cursor.visible = false; 
-        hit_plane = new Plane(-Vector3.forward, transform.position);   
+        hit_plane = new Plane(Vector3.up, transform.position);   
     }
 
     // Update is called once per frame
