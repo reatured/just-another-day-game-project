@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.Events;
 using UnityEngine;
+using JetBrains.Annotations;
 
 public class DiscPieceBehavior : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class DiscPieceBehavior : MonoBehaviour
 
     public GameObject t_cubeObj;
     private GameObject t_duplicatedSphere;
+
     
 
     // Start is called before the first frame update
@@ -29,12 +31,13 @@ public class DiscPieceBehavior : MonoBehaviour
         //initate changing color ===
         originalMateiral = GetComponent<MeshRenderer>().material; 
 
-        
-
-
         //initate rotation ----
         objMesh = GetComponent<MeshFilter>().mesh;
         originalDirection = transform.TransformPoint(objMesh.vertices[48]) - parent.transform.position;
+
+        //For Snapping Behavior
+        
+
 
         //testing Script --
         //Vector3 vertexPos = transform.TransformPoint(objMesh.vertices[48]);
@@ -81,7 +84,7 @@ public class DiscPieceBehavior : MonoBehaviour
             onDragging();   
         }
     }
-
+    // 2222222222222222 -- Dragging Behavior
     void onDragEnter()
     {
 
@@ -90,16 +93,22 @@ public class DiscPieceBehavior : MonoBehaviour
     void onDragging()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float enter = 0.0f; 
+        float enter = 0.0f;
+        Vector3 rootPos = Vector3.zero; 
         if(hit_plane.Raycast(ray, out enter))
         {
-            transform.position = ray.GetPoint(enter) + offset;
+            rootPos = ray.GetPoint(enter) + offset;
         }
+
+        //1. checkingDistance
+        GetComponent<DiscSnapBehavior>().checkDistance();
+        GetComponent<PiecesTransform>().moveRoot(rootPos);
+        //2. changing the root position
     }
 
-    void onDragEnd()
+    public void onDragEnd()
     {
- 
+        dragState = false;
     }
 
 
@@ -121,7 +130,7 @@ public class DiscPieceBehavior : MonoBehaviour
         {
             if (dragState)
             {
-                dragState = false;
+                
                 onDragEnd();
             }
             

@@ -2,16 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-[RequireComponent(typeof(PaperBehavior))]
+
 public class DraggingBehavior : MonoBehaviour
 {
     
     public bool dragState = false, selectState = false;
-    public UnityEvent dragEnterEvent, dragEndEvent; 
+    public bool dragItself = true;
+    public Transform draggedObj = null;
+
+    public int index; 
+    public DiscSnappingManager snappingManager;
+    private PiecesTransform thisPieceTransform; 
+
     // Start is called before the first frame update
     void Start()
     {
 
+        if(draggedObj == null) draggedObj = transform;
+        snappingManager = transform.parent.GetComponent<DiscSnappingManager>();
+        thisPieceTransform = GetComponent<PiecesTransform>(); 
     }
 
     // Update is called once per frame
@@ -75,12 +84,13 @@ public class DraggingBehavior : MonoBehaviour
         {
             if (dragState)
             {
-                dragState = false;
+                
                 onDragEnd();
             }
-
         }
     }
+
+    public UnityEvent dragEnterEvent, dragEndEvent, draggingEvent;
 
     void onDragEnter()
     {
@@ -93,12 +103,23 @@ public class DraggingBehavior : MonoBehaviour
         float enter = 0.0f;
         if (hit_plane.Raycast(ray, out enter))
         {
-            transform.position = ray.GetPoint(enter) + offset;
+            draggedObj.position = ray.GetPoint(enter) + offset;
         }
+
+        draggingEvent.Invoke(); 
+
+        //if(thisPieceTransform != null)
+        //{
+        //    draggedObj.GetComponent<PiecesTransform>().position = transform.position;
+        //    snappingManager.checkDistance(draggedObj.GetComponent<PiecesTransform>().index);
+        //}
+        
     }
 
-    void onDragEnd()
+    public void onDragEnd()
     {
+        dragState = false;
         dragEndEvent.Invoke();
+
     }
 }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class HandBehavior : MonoBehaviour
 {
-    public Plane hit_plane; 
+    public Plane hit_plane;
+    public bool t_showCursor = false; 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false; 
+        Cursor.visible = t_showCursor; 
         hit_plane = new Plane(Vector3.up, transform.position);   
     }
 
