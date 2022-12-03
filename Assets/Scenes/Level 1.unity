@@ -781,7 +781,7 @@ PrefabInstance:
     - target: {fileID: 8429101412548343502, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 67
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234, type: 3}
@@ -1245,7 +1245,6 @@ MonoBehaviour:
   dragItself: 1
   draggedObj: {fileID: 0}
   index: 0
-  snappingManager: {fileID: 0}
   impactPoint: {x: 0, y: 0, z: 0}
   dragEnterEvent:
     m_PersistentCalls:
@@ -1284,7 +1283,6 @@ MonoBehaviour:
   rootTrans: {fileID: 0}
   checkDistance: 1
   index: 0
-  snappingManager: {fileID: 0}
 --- !u!64 &577804514
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2547,7 +2545,7 @@ PrefabInstance:
     - target: {fileID: 8429101412548343502, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 67
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234, type: 3}
@@ -2941,7 +2939,6 @@ MonoBehaviour:
   dragItself: 1
   draggedObj: {fileID: 0}
   index: 0
-  snappingManager: {fileID: 0}
   impactPoint: {x: 0, y: 0, z: 0}
   dragEnterEvent:
     m_PersistentCalls:
@@ -2980,7 +2977,6 @@ MonoBehaviour:
   rootTrans: {fileID: 0}
   checkDistance: 1
   index: 0
-  snappingManager: {fileID: 0}
 --- !u!64 &915246945
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3362,7 +3358,7 @@ PrefabInstance:
     - target: {fileID: 8429101412548343502, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 70
+      value: 73
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234, type: 3}
@@ -4037,7 +4033,6 @@ MonoBehaviour:
   dragItself: 1
   draggedObj: {fileID: 0}
   index: 0
-  snappingManager: {fileID: 0}
   impactPoint: {x: 0, y: 0, z: 0}
   dragEnterEvent:
     m_PersistentCalls:
@@ -4076,7 +4071,6 @@ MonoBehaviour:
   rootTrans: {fileID: 0}
   checkDistance: 1
   index: 0
-  snappingManager: {fileID: 0}
 --- !u!64 &1281640151
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4294,7 +4288,7 @@ PrefabInstance:
     - target: {fileID: 8429101412548343502, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 67
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234, type: 3}
@@ -6501,7 +6495,7 @@ PrefabInstance:
     - target: {fileID: 8429101412548343502, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 70
+      value: 73
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234, type: 3}
@@ -6589,7 +6583,6 @@ MonoBehaviour:
   dragItself: 1
   draggedObj: {fileID: 0}
   index: 0
-  snappingManager: {fileID: 0}
   impactPoint: {x: 0, y: 0, z: 0}
   dragEnterEvent:
     m_PersistentCalls:
@@ -6628,7 +6621,6 @@ MonoBehaviour:
   rootTrans: {fileID: 0}
   checkDistance: 1
   index: 0
-  snappingManager: {fileID: 0}
 --- !u!64 &1945545502
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6831,7 +6823,7 @@ PrefabInstance:
     - target: {fileID: 8429101412548343502, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 70
+      value: 73
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234, type: 3}
@@ -6931,7 +6923,7 @@ PrefabInstance:
     - target: {fileID: 8429101412548343502, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 73
+      value: 76
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234, type: 3}
@@ -7057,7 +7049,7 @@ PrefabInstance:
     - target: {fileID: 8429101412548343502, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 64
+      value: 67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e14c9e7eabbfbd4a8fb2a71ec5a7234, type: 3}

@@ -10,7 +10,7 @@ public class PiecesTransform : MonoBehaviour
     public bool checkDistance = true;
     public int index;
 
-    public DiscSnappingManager snappingManager;
+    private DiscSnappingManager snappingManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +55,7 @@ public class PiecesTransform : MonoBehaviour
     public void moveTowardParent()
     {
         position = rootTrans.position;
-        //position = Vector3.Lerp(position, rootTrans.position, 0.1f);
+
         transform.position = position; 
     }
 
@@ -85,4 +85,5 @@ public class PiecesTransform : MonoBehaviour
         attachedTo(parentTrans);
         moveTowardParent();
     }
+
 }

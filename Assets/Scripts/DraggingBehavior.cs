@@ -11,7 +11,6 @@ public class DraggingBehavior : MonoBehaviour
     public Transform draggedObj = null;
 
     public int index; 
-    public DiscSnappingManager snappingManager;
     private PiecesTransform thisPieceTransform; 
 
     // Start is called before the first frame update
@@ -19,7 +18,6 @@ public class DraggingBehavior : MonoBehaviour
     {
 
         if(draggedObj == null) draggedObj = transform;
-        snappingManager = transform.parent.GetComponent<DiscSnappingManager>();
         thisPieceTransform = GetComponent<PiecesTransform>(); 
     }
 
@@ -107,13 +105,6 @@ public class DraggingBehavior : MonoBehaviour
         }
 
         draggingEvent.Invoke(); 
-
-        //if(thisPieceTransform != null)
-        //{
-        //    draggedObj.GetComponent<PiecesTransform>().position = transform.position;
-        //    snappingManager.checkDistance(draggedObj.GetComponent<PiecesTransform>().index);
-        //}
-        
     }
 
     public void onDragEnd()
