@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PiecesTransform : MonoBehaviour
 {
+    [HideInInspector][SerializeField]
     public Vector3 position;
     private Transform objTrans;
-    public Transform rootTrans;
-    public bool checkDistance = true;
+    private Transform rootTrans;
+    private bool checkDistance = true;
     public int index;
 
     private DiscSnappingManager snappingManager;
@@ -66,7 +67,10 @@ public class PiecesTransform : MonoBehaviour
 
     public void checkSnappingDistance() {
         rootTrans.GetComponent<PiecesTransform>().position = rootTrans.position;
-        snappingManager.checkDistance(rootTrans.GetComponent<PiecesTransform>().index);
+        int myIndex = rootTrans.GetComponent<PiecesTransform>().index;
+
+        snappingManager.checkDistance(myIndex);
+
     }
 
     //*Done Stop Dragging
@@ -85,5 +89,12 @@ public class PiecesTransform : MonoBehaviour
         attachedTo(parentTrans);
         moveTowardParent();
     }
+
+    public bool needToCheckDistance()
+    {
+        return checkDistance; 
+    }
+
+   
 
 }

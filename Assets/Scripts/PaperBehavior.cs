@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PaperBehavior : MonoBehaviour
 {
-    private DraggingBehavior dragScript;
+    public DraggingBehavior dragScript;
     public Material paperMaterial;
     private Vector3 posShift;
     private float yShift = 0; 
@@ -24,7 +24,7 @@ public class PaperBehavior : MonoBehaviour
         paperMaterial.SetVector("_PosShift", posShift);
 
 
-        updateTouchPos(); 
+        //updateTouchPos(); 
         yShift = Mathf.Lerp(yShift, 0.09f, 0.1f);
         paperMaterial.SetFloat("_BendHeight", yShift);
     }
@@ -32,16 +32,10 @@ public class PaperBehavior : MonoBehaviour
     public Vector3 offset = Vector3.zero; 
     public void setTouchPos()
     {
-        try
-        {
-            paperMaterial.SetVector("_Touch_Position", dragScript.impactPoint);
-            offset = dragScript.impactPoint - transform.position;
-        }catch(InvalidCastException e)
-        {
-            Debug.LogError(e.Message);
-        }
-        
 
+        //Debug.Log(paperMaterial);
+        paperMaterial.SetVector("_Touch_Position", dragScript.impactPoint);
+        offset = dragScript.impactPoint - transform.position;
     }
 
     public void resetPosShift()

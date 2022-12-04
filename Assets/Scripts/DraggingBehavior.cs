@@ -6,11 +6,11 @@ using UnityEngine.Events;
 public class DraggingBehavior : MonoBehaviour
 {
     
-    public bool dragState = false, selectState = false;
+    private bool dragState = false, selectState = false;
     public bool dragItself = true;
     public Transform draggedObj = null;
 
-    public int index; 
+
     private PiecesTransform thisPieceTransform; 
 
     // Start is called before the first frame update
@@ -49,14 +49,15 @@ public class DraggingBehavior : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            impactPoint = hit.point;
-            //impactPoint.z = hit.collider.gameObject.transform.position.z;
-
-            hit_plane = new Plane(Vector3.up, impactPoint);
-            offset = hit.collider.gameObject.transform.position - impactPoint;
+            
 
             if (GameObject.ReferenceEquals(hit.collider.gameObject, this.gameObject))
             {
+                impactPoint = hit.point;
+                //impactPoint.z = hit.collider.gameObject.transform.position.z;
+
+                hit_plane = new Plane(Vector3.up, impactPoint);
+                offset = hit.collider.gameObject.transform.position - impactPoint;
                 return true;
             }
 
@@ -92,6 +93,7 @@ public class DraggingBehavior : MonoBehaviour
 
     void onDragEnter()
     {
+
         dragEnterEvent.Invoke(); 
     }
 

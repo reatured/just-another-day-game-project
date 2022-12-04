@@ -44,7 +44,7 @@ public class DiscSnapBehavior : MonoBehaviour
         for(int i = 0; i < otherPieces.Length; i++)
         {
             
-            if (otherPieces[i] != null && otherPieces[i].checkDistance)
+            if (otherPieces[i] != null && otherPieces[i].needToCheckDistance())
             {
                 float distance = (piecesTransform.position - otherPieces[i].position).magnitude;
                 Debug.Log(distance);
