@@ -103,16 +103,31 @@ public class DraggingBehavior : MonoBehaviour
         float enter = 0.0f;
         if (hit_plane.Raycast(ray, out enter))
         {
-            draggedObj.position = ray.GetPoint(enter) + offset;
+            Vector3 newPosition = ray.GetPoint(enter) + offset;
+            draggedObj.position = new Vector3(newPosition.x, draggedObj.position.y, newPosition.z);
         }
 
         draggingEvent.Invoke(); 
+        //For Record Pieces, check distance is added at the beginning and is removed after the record is fixed
     }
 
     public void onDragEnd()
     {
         dragState = false;
         dragEndEvent.Invoke();
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.name == "Record Player")
+        {
+            DiscSnappingManager manager = transform.parent.GetComponent<DiscSnappingManager>();
+            if(manager != null)
+            {
+                manager.readyToPutIntoPlayer = true;
+            }
+            
+        }
     }
 }
