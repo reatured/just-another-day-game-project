@@ -32,7 +32,7 @@ public class DiscSnappingManager : MonoBehaviour
         anim_controller = GetComponent<Animator>(); 
     }
     private float distance = 0f;
-    public UnityEvent whenTheRecordIsFixed; 
+
     public void checkDistance(int index)
     {
 
@@ -72,16 +72,29 @@ public class DiscSnappingManager : MonoBehaviour
 
     public void removeAllChild()
     {
+        GameObject recordWholePiece = new GameObject("recordWholePiece");
+        recordWholePiece.transform.parent = this.transform; 
+        //Instantiate(recordWholePiece, Vector3.zero, Quaternion.identity, this.transform);
         for(int i = childPiecesTransform.Length - 1; i >= 0; i--)
         {
+            
             PiecesTransform currentPT = childPiecesTransform[i];
             DraggingBehavior currentDB = currentPT.GetComponent<DraggingBehavior>();
 
+            
+            
             currentDB.draggingEvent.RemoveAllListeners();
             currentDB.dragEnterEvent.AddListener(pickedUpY);
             currentDB.dragEndEvent.AddListener(putDownY);
 
+            //toBe Removed
+            
 
+            currentDB.draggedObj = recordWholePiece.transform;
+            currentDB.transform.parent = recordWholePiece.transform;
+            currentDB.transform.localPosition = new Vector3(0, 0, 0);
+
+            //Till here removed; 
             //childPiecesTransform[i].GetComponent<DraggingBehavior>().draggingEvent.
             Destroy(childPiecesTransform[i]);
         }
@@ -98,6 +111,10 @@ public class DiscSnappingManager : MonoBehaviour
         if (!readyToPutIntoPlayer)
         {
             anim_controller.SetBool("PickedUp", false);
+        }
+        else
+        {
+            anim_controller.SetBool("OnPlayer", true);
         }
         
     }

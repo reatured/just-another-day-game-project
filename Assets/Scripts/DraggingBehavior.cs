@@ -108,7 +108,10 @@ public class DraggingBehavior : MonoBehaviour
         }
 
         draggingEvent.Invoke(); 
+        //From DiscSnappingManager.cs
         //For Record Pieces, check distance is added at the beginning and is removed after the record is fixed
+        //Removed After the disk is fixed.
+
     }
 
     public void onDragEnd()
@@ -119,7 +122,7 @@ public class DraggingBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        print(other.name);
         if (other.name == "Record Player")
         {
             DiscSnappingManager manager = transform.parent.GetComponent<DiscSnappingManager>();
