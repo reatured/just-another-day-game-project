@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class DraggingBehavior : MonoBehaviour
 {
     
-    private bool dragState = false, selectState = false;
+    public bool dragState = false, selectState = false;
     public bool dragItself = true;
     public Transform draggedObj = null;
 

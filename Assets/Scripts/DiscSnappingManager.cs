@@ -12,9 +12,9 @@ public class DiscSnappingManager : MonoBehaviour
     
     private int totalPieces = 4;
     private int fixedPieces = 1;
-    private bool fixedState = false; 
 
-    public 
+    public GameObject stage2Record; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,17 +55,18 @@ public class DiscSnappingManager : MonoBehaviour
                 fixedPieces++;
                 if(fixedPieces == totalPieces)
                 {
-                    onRecordFixedBegin();
+                    beginStage2();
                 }
                 return;
             }
         }
     }
 
-    public void onRecordFixedBegin()
+    public void beginStage2()
     {
-        fixedState = true; 
-        removeAllChild();
+        stage2Record.SetActive(true);
+        stage2Record.transform.position = transform.GetChild(0).position;
+        Destroy(this.gameObject);
         Camera.main.GetComponent<Animator>().SetTrigger("Stage2");
 
     }

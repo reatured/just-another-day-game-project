@@ -56,5 +56,5 @@ Material:
     - _BaseColor: {r: 0.7169812, g: 0.39061224, b: 0.050053377, a: 0}
     - _Emission: {r: 0.3679245, g: 0.32254145, b: 0.30683514, a: 0}
     - _PosShift: {r: 0, g: 0.31, b: 0, a: 0}
-    - _Touch_Position: {r: 0.3203907, g: 0.081258595, b: 0.80229944, a: 0}
+    - _Touch_Position: {r: 0.055611536, g: 0.08094343, b: -0.24363048, a: 0}
   m_BuildTextureStacks: []
