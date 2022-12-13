@@ -29,7 +29,6 @@ public class DiscSnappingManager : MonoBehaviour
             currentDB.draggingEvent.AddListener(currentPT.checkSnappingDistance);
         }
 
-        anim_controller = GetComponent<Animator>(); 
     }
     private float distance = 0f;
 
@@ -67,58 +66,7 @@ public class DiscSnappingManager : MonoBehaviour
         stage2Record.SetActive(true);
         stage2Record.transform.position = transform.GetChild(0).position;
         Destroy(this.gameObject);
-        Camera.main.GetComponent<Animator>().SetTrigger("Stage2");
-
-    }
-
-    public void removeAllChild()
-    {
-        GameObject recordWholePiece = new GameObject("recordWholePiece");
-        recordWholePiece.transform.parent = this.transform; 
-        //Instantiate(recordWholePiece, Vector3.zero, Quaternion.identity, this.transform);
-        for(int i = childPiecesTransform.Length - 1; i >= 0; i--)
-        {
-            
-            PiecesTransform currentPT = childPiecesTransform[i];
-            DraggingBehavior currentDB = currentPT.GetComponent<DraggingBehavior>();
-
-            
-            
-            currentDB.draggingEvent.RemoveAllListeners();
-            currentDB.dragEnterEvent.AddListener(pickedUpY);
-            currentDB.dragEndEvent.AddListener(putDownY);
-
-            //toBe Removed
-            
-
-            currentDB.draggedObj = recordWholePiece.transform;
-            currentDB.transform.parent = recordWholePiece.transform;
-            currentDB.transform.localPosition = new Vector3(0, 0, 0);
-
-            //Till here removed; 
-            //childPiecesTransform[i].GetComponent<DraggingBehavior>().draggingEvent.
-            Destroy(childPiecesTransform[i]);
-        }
-    }
-
-    private Animator anim_controller; 
-    public void pickedUpY()
-    {
-        anim_controller.SetBool("PickedUp", true);
-    }
-
-    public void putDownY()
-    {
-        if (!readyToPutIntoPlayer)
-        {
-            anim_controller.SetBool("PickedUp", false);
-        }
-        else
-        {
-            anim_controller.SetBool("OnPlayer", true);
-        }
         
-    }
 
-    public bool readyToPutIntoPlayer = false; 
+    }
 }

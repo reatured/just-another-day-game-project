@@ -24,18 +24,17 @@ public class DraggingBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!dragState)
-        {
-            selectState = isSelected();
-        }
+        
 
         checkDragState();
         if (dragState)
         {
-            onDragging(); 
+            onDragging();
         }
 
     }
+
+
 
     Ray ray;
     RaycastHit hit;
@@ -69,6 +68,11 @@ public class DraggingBehavior : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (!dragState)
+            {
+                selectState = isSelected();
+            }
+
             if (selectState)
             {
                 if (!dragState)
@@ -120,17 +124,5 @@ public class DraggingBehavior : MonoBehaviour
         dragEndEvent.Invoke();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        print(other.name);
-        if (other.name == "Record Player")
-        {
-            DiscSnappingManager manager = transform.parent.GetComponent<DiscSnappingManager>();
-            if(manager != null)
-            {
-                manager.readyToPutIntoPlayer = true;
-            }
-            
-        }
-    }
+    
 }
