@@ -13,8 +13,9 @@ public class DiscSnappingManager : MonoBehaviour
     private int totalPieces = 4;
     private int fixedPieces = 1;
 
-    public GameObject stage2Record; 
+    //public GameObject stage2Record; 
 
+    public LevelManager levelManager;
 
     // Start is called before the first frame update
     void Start()
@@ -63,10 +64,6 @@ public class DiscSnappingManager : MonoBehaviour
 
     public void beginStage2()
     {
-        stage2Record.SetActive(true);
-        stage2Record.transform.position = transform.GetChild(0).position;
-        Destroy(this.gameObject);
-        
-
+        levelManager.nextStage(); 
     }
 }
