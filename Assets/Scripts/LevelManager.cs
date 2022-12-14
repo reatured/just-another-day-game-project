@@ -5,8 +5,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public Stage[] stages;
-    public int totalStage;
-    public int currentStage = 0;
+    private int totalStage;
+    private int currentStage = 0;
 
     [Range(1, 4)]
     public int startFromStage = 1;
@@ -23,11 +23,6 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void nextStage()
     {

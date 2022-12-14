@@ -7,7 +7,11 @@ public class Stage : MonoBehaviour
     public GameObject[] objects;
     public int stageIndex;
     public string cameraTrigger;
-    
+
+    private void Awake()
+    {
+        endStage();
+    }
     public virtual void startStage()
     {
         print(stageIndex);
