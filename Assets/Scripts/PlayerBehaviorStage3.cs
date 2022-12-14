@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class PlayerBehaviorStage3 : MonoBehaviour
 {
 
@@ -107,7 +108,9 @@ public class PlayerBehaviorStage3 : MonoBehaviour
         toneArmPivot.transform.LookAt(impactPoint);
     }
 
-    public float toneArmPlayThreshold = 1f; 
+    public float toneArmPlayThreshold = 1f;
+
+    public LevelManager levelManager; 
     public void endMoveToneArm()
     {
         if(d_endDraggingText) print("endDragging");
@@ -115,7 +118,7 @@ public class PlayerBehaviorStage3 : MonoBehaviour
         if(Vector3.Distance(impactPoint, toneArmPlayingPos) < toneArmPlayThreshold)
         {
             print("Start to Play");
-            //endStage3(); 
+            levelManager.nextStage(); 
         }
 
 
@@ -124,11 +127,7 @@ public class PlayerBehaviorStage3 : MonoBehaviour
         toneArmColliderSphere.SetActive(false);
     }
 
-    public void endStage3()
-    {
-
-        Destroy(this);
-    }
+    
 
 
 }

@@ -11968,8 +11968,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects: []
-  stageIndex: 0
-  cameraTrigger: 
+  stageIndex: 4
+  cameraTrigger: Stage4
 --- !u!4 &191131251
 Transform:
   m_ObjectHideFlags: 0
@@ -12219,6 +12219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objects:
   - {fileID: 4967092983183615059}
+  - {fileID: 1904545485}
   stageIndex: 0
   cameraTrigger: Stage3
 --- !u!4 &291149762
@@ -15862,7 +15863,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27844
+  m_Name: pb_Mesh42324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16086,7 +16087,7 @@ MonoBehaviour:
   - {fileID: 2075063395}
   - {fileID: 291149761}
   - {fileID: 191131250}
-  startFromStage: 3
+  startFromStage: 2
 --- !u!4 &1251093083
 Transform:
   m_ObjectHideFlags: 0
@@ -26320,7 +26321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1904545486
 Transform:
   m_ObjectHideFlags: 0
@@ -26358,6 +26359,7 @@ MonoBehaviour:
   d_endDraggingText: 0
   d_startDraggingText: 0
   toneArmPlayThreshold: 1
+  levelManager: {fileID: 1251093082}
 --- !u!1001 &1914208716
 PrefabInstance:
   m_ObjectHideFlags: 0
