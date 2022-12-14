@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class DiscBehaviorStage_2 : MonoBehaviour
 {
+    public LevelManager levelManager;
+
     public Animator animator_controller;
     public DraggingBehavior currentDB;
 
     public bool readyToPutIntoPlayer = false;
-    public Vector3 positionOfRecordOnPlayer = new Vector3(3.256f, 0f, 0.01039798f); 
+    private Vector3 positionOfRecordOnPlayer;
 
 
     // Start is called before the first frame update
@@ -16,7 +18,7 @@ public class DiscBehaviorStage_2 : MonoBehaviour
     {
         positionOfRecordOnPlayer = new Vector3(3.256f, 0f, 0.01039798f);
 
-        Camera.main.GetComponent<Animator>().SetTrigger("Stage2");
+
 
 
         animator_controller = GetComponentInChildren<Animator>();
@@ -57,7 +59,7 @@ public class DiscBehaviorStage_2 : MonoBehaviour
     void beginStage3()
     {
         putRecordOnPlayer();
-        Camera.main.GetComponent<Animator>().SetTrigger("Stage3");
+        
     }
 
 
@@ -77,6 +79,10 @@ public class DiscBehaviorStage_2 : MonoBehaviour
         if(Time.time - startTime < movingTime)
         {
             StartCoroutine(moveToward(targetPos, movingTime));
+        }
+        else
+        {
+            levelManager.nextStage();
         }
 
     }
