@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class DiscSnappingManager : MonoBehaviour
 {
     private PiecesTransform[] childPiecesTransform;
+    private PiecesTransform rootTransform; 
     public float snapDistance = 0.1f;
     
     private int totalPieces = 4;
@@ -15,6 +16,8 @@ public class DiscSnappingManager : MonoBehaviour
 
     //public GameObject stage2Record; 
 
+    public float pieceSnappingSpeedinSecs = 1;
+    public AnimationCurve snappingCurve; 
     public LevelManager levelManager;
 
     // Start is called before the first frame update
@@ -27,7 +30,9 @@ public class DiscSnappingManager : MonoBehaviour
             DraggingBehavior currentDB = currentPT.GetComponent<DraggingBehavior>();
 
             currentPT.index = i;
-            currentDB.draggingEvent.AddListener(currentPT.checkSnappingDistance);
+            currentPT.animateTime = pieceSnappingSpeedinSecs;
+            currentPT.curve = snappingCurve; 
+            currentDB.dragEndEvent.AddListener(currentPT.checkSnappingDistance);
         }
 
     }
@@ -55,6 +60,7 @@ public class DiscSnappingManager : MonoBehaviour
                 fixedPieces++;
                 if(fixedPieces == totalPieces)
                 {
+                    rootTransform = self; 
                     beginStage2();
                 }
                 return;
@@ -62,8 +68,10 @@ public class DiscSnappingManager : MonoBehaviour
         }
     }
 
+    public GlobalValues globalValue; 
     public void beginStage2()
     {
-        levelManager.nextStage(); 
+        globalValue.sendPositionToStage2(rootTransform.getRootPos());
+        levelManager.nextStageAfterSeconds(1f); 
     }
 }

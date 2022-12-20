@@ -36,11 +36,6 @@ public class LevelManager : MonoBehaviour
     {
         stageIndex--; 
 
-        print("Go To: " + stageIndex);
-        if (stageIndex - 1 >= 0)   
-        {
-            stages[stageIndex - 1].endStage();
-        }
         if (stageIndex < stages.Length)
         {
             stages[stageIndex].startStage();
@@ -49,6 +44,23 @@ public class LevelManager : MonoBehaviour
         {
             print("Stage Not Existing");
         }
+        print("Go To: " + stageIndex);
+        if (stageIndex - 1 >= 0)   
+        {
+            stages[stageIndex - 1].endStage();
+        }
+        
+    }
+
+    public void nextStageAfterSeconds(float delay)
+    {
+        StartCoroutine(goToStageAfterSecondsIE(delay));
+    }
+
+    public IEnumerator goToStageAfterSecondsIE(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        nextStage(); 
     }
 
     public void nextStage(float delayForKillingPreviousStage)

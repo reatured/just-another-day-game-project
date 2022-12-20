@@ -150,7 +150,7 @@ public class PlayerBehaviorStage3 : MonoBehaviour
         toneArmPivot.transform.LookAt(impactPoint);
         yield return new WaitForFixedUpdate();
 
-        if (journeyTime < animateTime) 
+        if (journeyTime < 1) 
         {
             StartCoroutine(finishingStage());
         }

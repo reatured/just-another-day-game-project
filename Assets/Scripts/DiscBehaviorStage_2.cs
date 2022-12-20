@@ -13,12 +13,18 @@ public class DiscBehaviorStage_2 : MonoBehaviour
     private Vector3 positionOfRecordOnPlayer;
 
 
+    public GlobalValues globalValue;
     // Start is called before the first frame update
     void Start()
     {
         positionOfRecordOnPlayer = new Vector3(3.256f, 0f, 0.01039798f);
 
+        Vector3 startingPosition = globalValue.stage1RecordPosition;
+ 
+        startingPosition.y = 0f;
+        this.transform.position = startingPosition;
 
+        
 
 
         animator_controller = GetComponentInChildren<Animator>();

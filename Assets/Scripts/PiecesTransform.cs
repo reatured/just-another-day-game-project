@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PiecesTransform : MonoBehaviour
 {
-    [HideInInspector][SerializeField]
+
     public Vector3 position;
     private Transform objTrans;
     private Transform rootTrans;
@@ -44,9 +44,6 @@ public class PiecesTransform : MonoBehaviour
             childs[i].rootTrans = parentTrans;
             childs[i].GetComponent<DraggingBehavior>().draggedObj = parentTrans; 
         }
-
-
-
         checkDistance = false;
         //GetComponent<PiecesAttachingBehavior>().setParentRotation(GetComponentInParent<ManageDiscPieces>().getRotation());
         //GetComponent<PiecesAttachingBehavior>().enabled = true;
@@ -61,14 +58,16 @@ public class PiecesTransform : MonoBehaviour
 
         //---
         startingTime = Time.time;
+        
+        startingPos = position;
+
         StartCoroutine(animateTowardParent());
-        startingPos = position; 
     }
 
-    float startingTime;
+    public float startingTime;
     public AnimationCurve curve;
     public float animateTime;
-    private Vector3 startingPos; 
+    public Vector3 startingPos; 
 
     public IEnumerator animateTowardParent()
     {
@@ -76,9 +75,11 @@ public class PiecesTransform : MonoBehaviour
         position = Vector3.Lerp(startingPos, rootTrans.position, journeyTime);
 
         transform.position = position;
+
+        print(journeyTime);
         yield return new WaitForFixedUpdate();
 
-        if (journeyTime < animateTime)
+        if (journeyTime < 1.1f)
         {
             StartCoroutine(animateTowardParent());
         }
@@ -101,7 +102,7 @@ public class PiecesTransform : MonoBehaviour
     //*Done Stop Dragging
     public void onSnapEnter()
     {
-        GetComponent<DraggingBehavior>().onDragEnd();
+        //GetComponent<DraggingBehavior>().onDragEnd();
     }
 
     //*Done Change the root 
@@ -118,6 +119,11 @@ public class PiecesTransform : MonoBehaviour
     public bool needToCheckDistance()
     {
         return checkDistance; 
+    }
+
+    public Vector3 getRootPos()
+    {
+        return rootTrans.position;
     }
 
    
