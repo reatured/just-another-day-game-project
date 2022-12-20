@@ -11,30 +11,21 @@ public class DraggingBehavior : MonoBehaviour
     public Transform draggedObj = null;
 
 
-    private PiecesTransform thisPieceTransform; 
-
     // Start is called before the first frame update
     void Start()
     {
-
         if(draggedObj == null) draggedObj = transform;
-        thisPieceTransform = GetComponent<PiecesTransform>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
         checkDragState();
         if (dragState)
         {
             onDragging();
         }
-
     }
-
-
 
     Ray ray;
     RaycastHit hit;
@@ -45,21 +36,16 @@ public class DraggingBehavior : MonoBehaviour
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-
         if (Physics.Raycast(ray, out hit))
         {
-            
-
             if (GameObject.ReferenceEquals(hit.collider.gameObject, this.gameObject))
             {
                 impactPoint = hit.point;
-                //impactPoint.z = hit.collider.gameObject.transform.position.z;
 
                 hit_plane = new Plane(Vector3.up, impactPoint);
                 offset = hit.collider.gameObject.transform.position - impactPoint;
                 return true;
             }
-
         }
         return false;
     }
@@ -80,7 +66,6 @@ public class DraggingBehavior : MonoBehaviour
                     dragState = true;
                     onDragEnter();
                 }
-
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -112,7 +97,7 @@ public class DraggingBehavior : MonoBehaviour
         }
 
         draggingEvent.Invoke(); 
-        //From DiscSnappingManager.cs
+        //Add listener From DiscSnappingManager.cs 
         //For Record Pieces, check distance is added at the beginning and is removed after the record is fixed
         //Removed After the disk is fixed.
 
@@ -120,6 +105,7 @@ public class DraggingBehavior : MonoBehaviour
 
     public void onDragEnd()
     {
+        print("drag End");
         dragState = false;
         dragEndEvent.Invoke();
     }

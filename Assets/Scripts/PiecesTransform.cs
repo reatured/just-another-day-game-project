@@ -55,9 +55,34 @@ public class PiecesTransform : MonoBehaviour
 
     public void moveTowardParent()
     {
-        position = rootTrans.position;
+        //position = rootTrans.position;
 
-        transform.position = position; 
+        //transform.position = position;
+
+        //---
+        startingTime = Time.time;
+        StartCoroutine(animateTowardParent());
+        startingPos = position; 
+    }
+
+    float startingTime;
+    public AnimationCurve curve;
+    public float animateTime;
+    private Vector3 startingPos; 
+
+    public IEnumerator animateTowardParent()
+    {
+        float journeyTime = (Time.time - startingTime) / animateTime;
+        position = Vector3.Lerp(startingPos, rootTrans.position, journeyTime);
+
+        transform.position = position;
+        yield return new WaitForFixedUpdate();
+
+        if (journeyTime < animateTime)
+        {
+            StartCoroutine(animateTowardParent());
+        }
+
     }
 
     public void moveRoot(Vector3 rootPos)

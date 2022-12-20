@@ -20,6 +20,8 @@ public class PlayerBehaviorStage3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         toneArmColliderSphere.SetActive(false);
 
         toneArmMinimunY = toneArmColliderSphere.transform.position.y; 
@@ -115,10 +117,14 @@ public class PlayerBehaviorStage3 : MonoBehaviour
     {
         if(d_endDraggingText) print("endDragging");
         toneArmDragState = false;
-        if(Vector3.Distance(impactPoint, toneArmPlayingPos) < toneArmPlayThreshold)
+
+        float distance = Vector3.Distance(impactPoint, toneArmPlayingPos);
+        print(distance);
+        if (distance < toneArmPlayThreshold)
         {
-            print("Start to Play");
-            levelManager.nextStage(); 
+            print("Start to Play: " + distance);
+            startFinishStage();
+            levelManager.nextStage(animateTime * 11.1f);
         }
 
 
@@ -126,8 +132,27 @@ public class PlayerBehaviorStage3 : MonoBehaviour
 
         toneArmColliderSphere.SetActive(false);
     }
+    float startingTime;
+    public AnimationCurve curve;
+    public float animateTime; 
+    public void startFinishStage()
+    {
+        startingTime = Time.time;
+        StartCoroutine(finishingStage());
+    }
 
-    
+    public IEnumerator finishingStage()
+    {
 
+        float journeyTime = (Time.time - startingTime) / animateTime; 
 
+        impactPoint = Vector3.Lerp(impactPoint, toneArmPlayingPos, journeyTime);
+        toneArmPivot.transform.LookAt(impactPoint);
+        yield return new WaitForFixedUpdate();
+
+        if (journeyTime < animateTime) 
+        {
+            StartCoroutine(finishingStage());
+        }
+    }
 }

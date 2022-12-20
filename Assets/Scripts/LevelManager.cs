@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         totalStage = stages.Length;
         currentStage = startFromStage;
         goToStage(currentStage);
@@ -48,7 +49,36 @@ public class LevelManager : MonoBehaviour
         {
             print("Stage Not Existing");
         }
+    }
 
+    public void nextStage(float delayForKillingPreviousStage)
+    {
+        currentStage++;
+
+        StartCoroutine(goToStageWithDelay(currentStage, delayForKillingPreviousStage));
+    }
+
+    public IEnumerator goToStageWithDelay(int stageIndex, float delay)
+    {
+        stageIndex--;
+        print("Go To: " + stageIndex);
+
+        if (stageIndex < stages.Length)
+        {
+            stages[stageIndex].startStage();
+        }
+        else
+        {
+            print("Stage Not Existing");
+        }
+
+        yield return new WaitForSeconds(delay);
+
+
+        if (stageIndex - 1 >= 0)
+        {
+            stages[stageIndex - 1].endStage();
+        }
     }
 
     
