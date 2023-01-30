@@ -1,0 +1,384 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7e67b5626124d0db9886e6cd2aacff, type: 3}
+  m_Name: SewWire
+  m_EditorClassIdentifier: 
+  m_Empty: 1
+  m_ActiveParticleCount: 0
+  m_InitialActiveParticleCount: 23
+  _bounds:
+    m_Center: {x: 0, y: -0.00000032801256, z: 0}
+    m_Extent: {x: 1, y: 0.000001155111, z: 0}
+  positions: []
+  restPositions: []
+  orientations: []
+  restOrientations: []
+  velocities: []
+  angularVelocities: []
+  invMasses: []
+  invRotationalMasses: []
+  filters: 
+  principalRadii: []
+  colors: []
+  points: 
+  edges: 
+  triangles: 
+  distanceConstraintsData:
+    batches: []
+  bendConstraintsData:
+    batches: []
+  skinConstraintsData:
+    batches: []
+  tetherConstraintsData:
+    batches: []
+  stretchShearConstraintsData:
+    batches: []
+  bendTwistConstraintsData:
+    batches: []
+  shapeMatchingConstraintsData:
+    batches: []
+  aerodynamicConstraintsData:
+    batches: []
+  chainConstraintsData:
+    batches: []
+  volumeConstraintsData:
+    batches: []
+  groups:
+  - {fileID: 8598305644873505538}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2635458000567095068}
+  path:
+    m_Names:
+    - End
+    - End
+    - End
+    - End
+    - Start
+    m_Points:
+      data:
+      - tangentMode: 0
+        inTangent: {x: -0.25, y: -0, z: -0}
+        position: {x: -1.4026392, y: 0, z: 0}
+        outTangent: {x: 0.2500987, y: 0, z: 0}
+      - tangentMode: 0
+        inTangent: {x: -0.29520294, y: 0.0000018612967, z: 0}
+        position: {x: -0.5349482, y: 0, z: 0}
+        outTangent: {x: 0.26270422, y: -0.0000016563877, z: 0}
+      - tangentMode: 0
+        inTangent: {x: -0.2630155, y: 0, z: 0}
+        position: {x: 0.21189213, y: -0.0000013113022, z: 0}
+        outTangent: {x: 0.23792839, y: 0, z: 0}
+      - tangentMode: 0
+        inTangent: {x: -0.2831283, y: 0, z: 0}
+        position: {x: 0.6833454, y: -0.0000010728836, z: 0}
+        outTangent: {x: 0.21872169, y: 0, z: 0}
+      - tangentMode: 0
+        inTangent: {x: -0.071784854, y: 0, z: 0}
+        position: {x: 1, y: 0, z: 0}
+        outTangent: {x: 0.25, y: -0, z: -0}
+    m_Normals:
+      data:
+      - {x: 0, y: 1, z: 0}
+      - {x: 0, y: 1, z: 0}
+      - {x: 0, y: 1, z: 0}
+      - {x: 0, y: 1, z: 0}
+      - {x: 0, y: 1, z: 0}
+    m_Colors:
+      data:
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+    m_Thickness:
+      data:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+    m_Masses:
+      data:
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+      - 0.1
+    m_RotationalMasses:
+      data:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+    m_Filters:
+      data: 0200ffff0200ffff0200ffff0200ffff0200ffff
+    m_Closed: 0
+    m_ArcLengthTable:
+    - 0
+    - 0.03620942
+    - 0.07333793
+    - 0.11132109
+    - 0.15009445
+    - 0.18959355
+    - 0.22975397
+    - 0.27051124
+    - 0.3118009
+    - 0.3535585
+    - 0.39571962
+    - 0.43821982
+    - 0.48099458
+    - 0.52397954
+    - 0.5671102
+    - 0.6103221
+    - 0.65355086
+    - 0.6967319
+    - 0.73980093
+    - 0.7826934
+    - 0.82534486
+    - 0.8676909
+    - 0.9049462
+    - 0.94168985
+    - 0.9779759
+    - 1.0138584
+    - 1.0493915
+    - 1.0846293
+    - 1.1196258
+    - 1.1544352
+    - 1.1891114
+    - 1.2237085
+    - 1.2582809
+    - 1.2928823
+    - 1.327567
+    - 1.362389
+    - 1.3974024
+    - 1.4326613
+    - 1.4682198
+    - 1.5041319
+    - 1.5404518
+    - 1.5772336
+    - 1.6145312
+    - 1.646632
+    - 1.6752225
+    - 1.7007048
+    - 1.7234807
+    - 1.743952
+    - 1.7625207
+    - 1.7795883
+    - 1.795557
+    - 1.8108286
+    - 1.8258048
+    - 1.8408877
+    - 1.8564789
+    - 1.8729804
+    - 1.8907939
+    - 1.9103215
+    - 1.9319649
+    - 1.956126
+    - 1.9832066
+    - 2.0136087
+    - 2.047734
+    - 2.0859845
+    - 2.115946
+    - 2.143442
+    - 2.1686265
+    - 2.191654
+    - 2.2126787
+    - 2.2318552
+    - 2.2493374
+    - 2.26528
+    - 2.2798371
+    - 2.2931633
+    - 2.3054128
+    - 2.3167398
+    - 2.3272986
+    - 2.3372438
+    - 2.3467295
+    - 2.3559103
+    - 2.3649402
+    - 2.3739736
+    - 2.3831651
+    - 2.3926687
+    - 2.402639
+    m_TotalSplineLenght: 2.402639
+    OnPathChanged:
+      m_PersistentCalls:
+        m_Calls: []
+    OnControlPointAdded:
+      m_PersistentCalls:
+        m_Calls: []
+    OnControlPointRemoved:
+      m_PersistentCalls:
+        m_Calls: []
+    OnControlPointRenamed:
+      m_PersistentCalls:
+        m_Calls: []
+  thickness: 0.1
+  resolution: 1
+  m_InterParticleDistance: 0.09090909
+  totalParticles: 123
+  m_RestLength: 11.0909
+  restLengths:
+  - 0.0905934
+  - 0.09047401
+  - 0.0906561
+  - 0.09074211
+  - 0.09056383
+  - 0.090687454
+  - 0.09069067
+  - 0.090554
+  - 0.09061292
+  - 0.09062243
+  - 0.09059697
+  - 0.09061
+  - 0.090596825
+  - 0.0906086
+  - 0.09062931
+  - 0.09053716
+  - 0.08487144
+  - 0.09309578
+  - 0.0931471
+  - 0.09302527
+  - 0.09315401
+  - 0.092930615
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0.09090909
+  - 0
+  pooledParticles: 100
+--- !u!114 &2635458000567095068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775ad4994fda946d1a5936c7e2dfc785, type: 3}
+  m_Name: Start
+  m_EditorClassIdentifier: 
+  particleIndices: 16000000
+  m_Blueprint: {fileID: 11400000}
+--- !u!114 &8598305644873505538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775ad4994fda946d1a5936c7e2dfc785, type: 3}
+  m_Name: End
+  m_EditorClassIdentifier: 
+  particleIndices: 00000000
+  m_Blueprint: {fileID: 11400000}
