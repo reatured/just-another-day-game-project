@@ -14,7 +14,7 @@ public class PlayerBehaviorStage3 : MonoBehaviour
     public Animation animTest;
 
     private float toneArmMinimunY, toneArmMaximunY = 0.6f;
-    private float toneArmPlayingHeight = 0.2726682f;
+    //private float toneArmPlayingHeight = 0.2726682f;
     private Vector3 toneArmPlayingPos = new Vector3(3.539357f, 0.2746092f, -0.3927215f);
 
     // Start is called before the first frame update
