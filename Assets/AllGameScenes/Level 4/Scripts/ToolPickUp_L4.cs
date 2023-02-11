@@ -7,9 +7,10 @@ public class ToolPickUp_L4 : MonoBehaviour
 {
     public Transform pickedUpTransform, restTransform;
     public Transform targetTransform;
-    public float thesholdSize; 
 
     private Vector3 targetPos;
+
+    public float thesholdSize;
     private Vector3 camToTarget;
     private float originalAngle;
     float dist_offset;
@@ -51,21 +52,27 @@ public class ToolPickUp_L4 : MonoBehaviour
 
 
     }
-
+    Ray ray;
+    RaycastHit hit;
     void OnMouseDrag()
     {
         camToTarget = targetPos - Camera.main.transform.position;
         float currentAngle = Vector3.Angle(camToTarget, transform.position - Camera.main.transform.position);
-        //Vector3 camToThrehold = targetPos
-        //float thresholdAngle = Vector3.Angle()
         float anglePercentile = 1 - currentAngle / originalAngle;
-
         print(anglePercentile);
 
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        int layer_mask = LayerMask.GetMask("WorkStationPlane");
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
+        {
+            print(hit.collider.gameObject.name);
+        }
 
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z - dist_offset * anglePercentile);
-        transform.position = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
 
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        Vector3 newPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+        newPosition.y = Mathf.Max(0.126f, newPosition.y);
+        transform.position = newPosition;
         transform.rotation = Quaternion.Lerp(restTransform.rotation, pickedUpTransform.rotation, anglePercentile * 1.2f);
     }
 
