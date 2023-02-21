@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PO_ToolProperty_L4_2 : PickableObject_L4_2
 {
-    protected Vector3 screenPoint;
-    protected Vector3 offset;
+    //protected Vector3 screenPoint;
+    //protected Vector3 offset;
     public float putBackAreaSize = 0.35f;
     public Plane toolMovementPlane;
 
@@ -28,24 +28,37 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
 
     public void pickUpObject()
     {
+        initiatePlane();
+        Debug.Log("Set up restTransform");
         copyTransform(this.transform, restTransform);
-        copyTransform(pickUpTransform, this.transform);
+
         if (handManager.objectInHand == null)
         {
             handManager.pickUpObject(this.gameObject);
         }
 
-        screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+        lerpToPickUpTransform();
 
 
+        
+
+
+        //screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+        //offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+        
+        
 
         Cursor.visible = false;
     }
 
+    public void lerpToPickUpTransform()
+    {
+        pickUpTransform.position = getImpactPoint();
+        copyTransform(pickUpTransform, this.transform);
+    }
     public virtual void initiatePlane()
     {
-
+        //Modify in Knife Class
     }
 
     //2. Update 
@@ -65,12 +78,43 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     
     public void followMouse()
     {
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        Vector3 newPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-        newPosition.y = 0.2f;
+
+
+        //Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        //Vector3 newPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+        //newPosition.y = 0.2f;
+        Vector3 newPosition = getImpactPoint(); 
         transform.position = newPosition;
 
     }
+
+    Ray ray;
+    RaycastHit hit;
+    public Vector3 impactPoint; 
+
+    public Vector3 getImpactPoint()
+    {
+        float enter = 0f;
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (toolMovementPlane.Raycast(ray, out enter))
+        {
+            Debug.Log("enter: " + enter);
+            impactPoint = ray.GetPoint(enter);
+
+        }
+        Debug.Log(impactPoint);
+        Debug.Log(enter); 
+           
+        return impactPoint;
+    }
+
+
+
+
+
+
+
+
 
     //3. Mouse Clicked:: Click Behavior::
 

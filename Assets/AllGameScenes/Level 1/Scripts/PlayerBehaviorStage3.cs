@@ -20,12 +20,9 @@ public class PlayerBehaviorStage3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-
         toneArmColliderSphere.SetActive(false);
 
         toneArmMinimunY = toneArmColliderSphere.transform.position.y; 
-
     }
 
     // Update is called once per frame

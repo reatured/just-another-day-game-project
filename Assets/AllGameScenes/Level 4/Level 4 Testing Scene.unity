@@ -10714,7 +10714,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29114
+  m_Name: pb_Mesh29118
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14762,6 +14762,7 @@ MonoBehaviour:
   restTransform: {fileID: 1514113472}
   pickUpTransform: {fileID: 1690012416}
   putBackAreaSize: 0.4
+  impactPoint: {x: 0, y: 0, z: 0}
   chopCurveMovement:
     serializedVersion: 2
     m_Curve:
@@ -14797,7 +14798,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   animationDurationInSecond: 0.15
   chopLength: 0.03
+  knifePickUpHeight: 0
   isChopping: 0
+  choppingBoard: {fileID: 1653111740}
+  knifeOffsetAboveChoppingBoard: 0
 --- !u!1 &1514113471
 GameObject:
   m_ObjectHideFlags: 0
@@ -14838,7 +14842,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514113471}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15233,7 +15237,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690012409}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -15464,7 +15468,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29010
+  m_Name: pb_Mesh29014
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

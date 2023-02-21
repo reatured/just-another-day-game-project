@@ -9,20 +9,28 @@ public class PO_TP_KnifeBehavior_L4_2 : PO_ToolProperty_L4_2
     public float animationDurationInSecond;
     public float chopLength;
     private Vector3 choppingOffset = Vector3.zero;
+    public float knifePickUpHeight; 
+
     public bool isChopping = false;
     public Transform choppingBoard;
     public float knifeOffsetAboveChoppingBoard; 
     public override void initiatePlane()
     {
         base.initiatePlane();
-        toolMovementPlane = new Plane(Vector3.up, choppingBoard.position + new Vector3(0, knifeOffsetAboveChoppingBoard, 0));
+        toolMovementPlane = new Plane(Vector3.up, choppingBoard.position + new Vector3(0, 0, 0));
+        print(toolMovementPlane);
     }
 
     public override void toolUpdate()
     {
 
         base.toolUpdate();
-        transform.position += choppingOffset;
+        Vector3 tempPos = transform.position;
+        tempPos.y += knifePickUpHeight;
+        tempPos += choppingOffset;
+        transform.position = tempPos;
+
+        Debug.DrawRay(Camera.main.transform.position, this.transform.position - Camera.main.transform.position, Color.green, 2, false);
     }
 
     public override void clickBehavior()
