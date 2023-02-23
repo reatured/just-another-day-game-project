@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class ToolPickUp_L4 : MonoBehaviour
+public class ToolPickUp_L4 : MonoBehaviour 
 {
+
+    //For Spatula's movement only
+
     public Transform pickedUpTransform, restTransform;
     public Transform targetTransform;
 
@@ -14,9 +17,12 @@ public class ToolPickUp_L4 : MonoBehaviour
     private Vector3 camToTarget;
     private float originalAngle;
     float dist_offset;
+
+    public Plane spatulaMovementPlane;
     // Start is called before the first frame update
     void Start()
     {
+        
         copyTransform(transform, restTransform);
         if(targetTransform == null)
         {
@@ -26,7 +32,7 @@ public class ToolPickUp_L4 : MonoBehaviour
         {
             targetPos = targetTransform.position;   
         }
-        
+        spatulaMovementPlane = new Plane(Vector3.up, targetPos);
     }
 
     private Vector3 screenPoint;
@@ -54,6 +60,20 @@ public class ToolPickUp_L4 : MonoBehaviour
     }
     Ray ray;
     RaycastHit hit;
+    public Vector3 impactPoint;
+    public Vector3 getImpactPoint()
+    {
+        float enter = 0f;
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (spatulaMovementPlane.Raycast(ray, out enter))
+        {
+            impactPoint = ray.GetPoint(enter);
+        }
+
+        return impactPoint;
+    }
+
+    public float potSize = 2;
     void OnMouseDrag()
     {
         camToTarget = targetPos - Camera.main.transform.position;
@@ -61,17 +81,13 @@ public class ToolPickUp_L4 : MonoBehaviour
         float anglePercentile = 1 - currentAngle / originalAngle;
         print(anglePercentile);
 
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        int layer_mask = LayerMask.GetMask("WorkStationPlane");
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layer_mask))
-        {
-            print(hit.collider.gameObject.name);
-        }
 
 
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        Vector3 newPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-        newPosition.y = Mathf.Max(0.126f, newPosition.y);
+        Vector3 newPosition = getImpactPoint();
+        float distanceToCenter = Vector3.Distance(newPosition, targetPos);
+        //anglePercentile = 
+
+
         transform.position = newPosition;
         transform.rotation = Quaternion.Lerp(restTransform.rotation, pickedUpTransform.rotation, anglePercentile * 1.2f);
     }

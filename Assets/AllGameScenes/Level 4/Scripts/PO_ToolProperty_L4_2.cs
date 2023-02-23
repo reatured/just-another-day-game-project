@@ -9,7 +9,7 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     //protected Vector3 offset;
     public float putBackAreaSize = 0.35f;
     public Plane toolMovementPlane;
-
+    public Collider knifeHolderCollider; 
 
     //1. onMouseDown(Pick Up)!: 
     // Base Class -> pickedUp(); 
@@ -38,15 +38,8 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
         }
 
         lerpToPickUpTransform();
-
-
-        
-
-
         //screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         //offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-        
-        
 
         Cursor.visible = false;
     }
@@ -79,13 +72,24 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     public void followMouse()
     {
 
-
-        //Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        //Vector3 newPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-        //newPosition.y = 0.2f;
         Vector3 newPosition = getImpactPoint(); 
         transform.position = newPosition;
 
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            ray = getRay(Camera.main.transform, transform);
+            if(knifeHolderCollider.Raycast(ray, out hit, 100f)){
+                copyTransform(restTransform, transform);
+                Cursor.visible = true;
+                putDown();
+            }
+        }
+    }
+    
+    public Ray getRay(Transform obj1, Transform obj2)
+    {
+        return new Ray(obj1.position, obj2.position - obj1.position);
     }
 
     Ray ray;
@@ -98,22 +102,12 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (toolMovementPlane.Raycast(ray, out enter))
         {
-            Debug.Log("enter: " + enter);
             impactPoint = ray.GetPoint(enter);
 
         }
-        Debug.Log(impactPoint);
-        Debug.Log(enter); 
            
         return impactPoint;
     }
-
-
-
-
-
-
-
 
 
     //3. Mouse Clicked:: Click Behavior::
@@ -121,31 +115,13 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     public override void clickBehavior()
     {
         base.clickBehavior();
-       
-        if (checkIfPutBack())
-        {
-            return;
-        }
+      
     }
-    public bool checkIfPutBack()
+
+    private void OnTriggerStay(Collider other)
     {
-        float distance = Vector3.Distance(transform.position, restTransform.position);
-        print("distance: " + distance);
-        if (distance < putBackAreaSize)
-        {
-            copyTransform(restTransform, transform);
-
-            
-            Cursor.visible = true;
-            putDown();
-
-            Debug.Log("Too Short");
-
-            return true;
-
-        }
-
-        return false;
+        
+        
     }
 
     //__________________Helper Functions
