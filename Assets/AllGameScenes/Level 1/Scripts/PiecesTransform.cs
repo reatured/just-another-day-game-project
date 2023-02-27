@@ -20,6 +20,10 @@ public class PiecesTransform : MonoBehaviour
         objTrans = transform;
         rootTrans = objTrans;
     }
+    private void FixedUpdate()
+    {
+        position = transform.position;
+    }
 
 
     public void beingDragged()
@@ -76,7 +80,7 @@ public class PiecesTransform : MonoBehaviour
 
         transform.position = position;
 
-        print(journeyTime);
+        //print(journeyTime);
         yield return new WaitForFixedUpdate();
 
         if (journeyTime < 1.1f)
@@ -92,6 +96,8 @@ public class PiecesTransform : MonoBehaviour
     }
 
     public void checkSnappingDistance() {
+ 
+
         rootTrans.GetComponent<PiecesTransform>().position = rootTrans.position;
         int myIndex = rootTrans.GetComponent<PiecesTransform>().index;
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+//Send Position information to Shader for shape deform...
 public class PaperBehavior : MonoBehaviour
 {
     public DraggingBehavior dragScript;
@@ -52,6 +53,16 @@ public class PaperBehavior : MonoBehaviour
         paperMaterial.SetVector("_Touch_Position", offset + transform.position);
     }
 
+    private void OnEnable()
+    {
+        Cursor.visible = false;
 
-    
+    }
+
+    private void OnDisable()
+    {
+        Cursor.visible = true;
+    }
+
+
 }

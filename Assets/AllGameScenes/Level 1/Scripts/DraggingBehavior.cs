@@ -93,7 +93,8 @@ public class DraggingBehavior : MonoBehaviour
         if (hit_plane.Raycast(ray, out enter))
         {
             Vector3 newPosition = ray.GetPoint(enter) + offset;
-            draggedObj.position = new Vector3(newPosition.x, draggedObj.position.y, newPosition.z);
+            newPosition.y = draggedObj.position.y; 
+            draggedObj.position = newPosition;
         }
 
         draggingEvent.Invoke(); 
@@ -108,6 +109,7 @@ public class DraggingBehavior : MonoBehaviour
         print("drag End");
         dragState = false;
         dragEndEvent.Invoke();
+        
     }
 
     

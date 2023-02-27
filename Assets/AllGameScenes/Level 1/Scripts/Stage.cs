@@ -15,7 +15,7 @@ public class Stage : MonoBehaviour
     public virtual void startStage()
     {
         print(stageIndex);
-        Camera.main.GetComponent<Animator>().SetTrigger(cameraTrigger);
+        //Camera.main.GetComponent<Animator>().SetTrigger(cameraTrigger);
         for (int i = 0; i < objects.Length; i++)
         {
             GameObject go = objects[i];

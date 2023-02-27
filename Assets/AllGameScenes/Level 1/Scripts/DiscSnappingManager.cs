@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public class DiscSnappingManager : MonoBehaviour
 {
-    private PiecesTransform[] childPiecesTransform;
+    public PiecesTransform[] childPiecesTransform;
     private PiecesTransform rootTransform; 
     public float snapDistance = 0.1f;
     
@@ -33,6 +33,8 @@ public class DiscSnappingManager : MonoBehaviour
             currentPT.animateTime = pieceSnappingSpeedinSecs;
             currentPT.curve = snappingCurve; 
             currentDB.dragEndEvent.AddListener(currentPT.checkSnappingDistance);
+
+            print("add listenneer");
         }
 
     }
@@ -40,7 +42,7 @@ public class DiscSnappingManager : MonoBehaviour
 
     public void checkDistance(int index)
     {
-
+        print("Checking Distance");
         PiecesTransform self = childPiecesTransform[index];
         for(int i = 0; i < childPiecesTransform.Length; i++)
         {
@@ -50,8 +52,8 @@ public class DiscSnappingManager : MonoBehaviour
             if (target.needToCheckDistance() == false) continue; 
 
             distance = (self.position - target.position).magnitude;
-            //Debug.Log("Distance to " + i + ": " +distance);
-            if(distance < snapDistance)
+            Debug.Log("Distance to " + i + ": " + distance);
+            if (distance < snapDistance)
             {
                 Debug.Log("Snapping " + i + " to " + index);
                 self.onSnapEnter();
@@ -60,7 +62,7 @@ public class DiscSnappingManager : MonoBehaviour
                 fixedPieces++;
                 if(fixedPieces == totalPieces)
                 {
-                    rootTransform = self; 
+                    rootTransform = self;
                     beginStage2();
                 }
                 return;
@@ -71,7 +73,8 @@ public class DiscSnappingManager : MonoBehaviour
     public GlobalValues globalValue; 
     public void beginStage2()
     {
+        print("Begin Stage 2");
         globalValue.sendPositionToStage2(rootTransform.getRootPos());
-        levelManager.nextStageAfterSeconds(1f); 
+        levelManager.nextStageAfterSeconds(1f);
     }
 }
