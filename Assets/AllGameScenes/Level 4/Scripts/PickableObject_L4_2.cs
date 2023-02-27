@@ -31,7 +31,7 @@ public class PickableObject_L4_2 : MonoBehaviour
     //subscribe to hand manager script's clickEvent
     public virtual void clickBehavior()
     {
-        Debug.Log("Base Clicked");
+
     }
 
     //called in Tool Class in click behavior

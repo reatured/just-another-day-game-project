@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8563628478412618078
+--- !u!114 &-1672228987905147208
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Paper
-  m_Shader: {fileID: -6465566751694194690, guid: 4b087db238c3e724698ac035da1915b1,
+  m_Name: Shader Graphs_IV Tube Seg 3
+  m_Shader: {fileID: -6465566751694194690, guid: d0aafec3be4133745869cbd34541c790,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -48,13 +48,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BendHeight: 0
+    - _Dripping_Percentile: 1.09
+    - _From: 0.4
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _maxDistance: 0.6
-    m_Colors:
-    - _BaseColor: {r: 0.7169812, g: 0.39061224, b: 0.050053377, a: 0}
-    - _Emission: {r: 0.3679245, g: 0.32254145, b: 0.30683514, a: 0}
-    - _PosShift: {r: 0, g: 0.31, b: 0, a: 0}
-    - _Touch_Position: {r: -0.009249575, g: 1.2267916, b: -0.11715654, a: 0}
+    - _To: 1
+    m_Colors: []
   m_BuildTextureStacks: []
