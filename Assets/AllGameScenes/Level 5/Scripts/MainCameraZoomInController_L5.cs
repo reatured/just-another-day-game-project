@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-
+using UnityEngine.Events; 
 public class MainCameraZoomInController_L5 : MonoBehaviour
 {
     void Start()
@@ -28,7 +28,7 @@ public class MainCameraZoomInController_L5 : MonoBehaviour
 
     float startTime = 0.0f; 
     bool zoomingAction = false;
-    bool zoomState = false; //false is not zoomed In
+    bool zoomState = false; //false is not zoomed In, look down
 
     public void startToZoom()
     {
@@ -100,10 +100,13 @@ public class MainCameraZoomInController_L5 : MonoBehaviour
         return false;
     }
 
+    public UnityEvent<bool> endZoomingEvent; 
     void finishingZooming()
     {
         zoomingAction = false;
+        endZoomingEvent.Invoke(zoomState); 
         zoomState = !zoomState;
+        
     }
 
     //==Helper Srcript

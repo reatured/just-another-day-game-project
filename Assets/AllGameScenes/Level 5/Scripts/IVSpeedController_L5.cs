@@ -28,5 +28,20 @@ public class IVSpeedController_L5 : MonoBehaviour
         {
             tubeMats[i].SetFloat("_Dripping_Percentile", tubePercentile);
         }
+        tubePercentile += speed * Time.deltaTime; 
     }
+
+    public float speed = 0f; 
+    private void OnMouseDown()
+    {
+        print("MouseDown");
+        speed = 0.1f;
+
+    }
+
+    private void OnMouseDrag()
+    {
+        print("dragged");
+    }
+
 }

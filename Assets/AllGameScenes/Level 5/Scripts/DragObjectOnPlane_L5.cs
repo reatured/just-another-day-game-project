@@ -7,14 +7,14 @@ public class DragObjectOnPlane_L5 : MonoBehaviour
 {
     Vector3 offset;
     Plane movementPlane;
-    Ray ray;
+    protected Ray ray;
 
     public Transform receiver;
     public float receiverSize = 1f;
 
     public bool isActive = false;
 
-    public Vector3 planeNormal; 
+    public Vector3 planeNormal;
     private void OnMouseDown()
     {
         print("Mouse Down");
@@ -28,16 +28,22 @@ public class DragObjectOnPlane_L5 : MonoBehaviour
     private void OnMouseDrag()
     {
         if (!isActive) return;
-        transform.position = getImpactPoint() + offset;
-        float distance = Vector3.Distance(receiver.position, transform.position);
-        if(distance < receiverSize)
-        {
-            transform.position = receiver.position;
-            transform.parent = receiver;
-            GetComponent<Collider>().enabled = false;
-            this.enabled = false;
-            isActive = false;
-        }
+        transform.position = getImpactPoint() /*+ offset*/;
+        transform.forward = getImpactNormal(); 
+        //float distance = Vector3.Distance(receiver.position, transform.position);
+        //if(distance < receiverSize)
+        //{
+        //    transform.position = receiver.position;
+        //    transform.parent = receiver;
+        //    GetComponent<Collider>().enabled = false;
+        //    this.enabled = false;
+        //    isActive = false;
+        //}
+    }
+    public virtual Vector3 getImpactNormal()
+    {
+
+        return transform.forward; 
     }
 
     private void OnMouseUp()
@@ -52,8 +58,9 @@ public class DragObjectOnPlane_L5 : MonoBehaviour
     }
 
     public Vector3 impactPoint;
-    public Vector3 getImpactPoint()
+    public virtual Vector3 getImpactPoint()
     {
+        print(impactPoint);
         float enter = 0f;
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (movementPlane.Raycast(ray, out enter))

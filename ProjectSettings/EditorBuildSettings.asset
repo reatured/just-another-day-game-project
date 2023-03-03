@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/AllGameScenes/Level 1/Level 1.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/AllGameScenes/Level 0/Level 0 Start Menu Scene.unity
+    guid: f7cc70861dc7d1d45bf1ffa3805b3171
+  - enabled: 1
+    path: Assets/AllGameScenes/Level 1/Level 1 Fix CD Scene.unity
+    guid: 202f4fb644169894483ee991a7f19be9
+  - enabled: 1
+    path: Assets/AllGameScenes/Level 2/Level 2 Sewing Teddy Bear.unity
+    guid: 1f683ae0316d0414f9fef2a76cb9f279
+  - enabled: 1
+    path: Assets/AllGameScenes/Level 3/Level 3 Fixing Projection Lamp.unity
+    guid: 527463fcb7861de48ae0742141668f5a
+  - enabled: 1
+    path: Assets/AllGameScenes/Level 4/Level 4 Cooking Soup.unity
+    guid: 22197eded6dcc1f4b812aec74b764fd0
+  - enabled: 1
+    path: Assets/AllGameScenes/Level 5/Level 5 At Hospital.unity
+    guid: dbb8f68d2e59d484bb02f38159f660b8
   m_configObjects: {}
