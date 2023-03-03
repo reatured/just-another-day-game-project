@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884965}
-  - component: {fileID: 884964}
   m_Layer: 0
   m_Name: Recipe Paper PickUp Transform
   m_TagString: Untagged
@@ -140,20 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &884964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15db59e6b46a4048ac485c42ffd6af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trans_pickedUp: {fileID: 884965}
-  trans_rest: {fileID: 0}
 --- !u!4 &884965
 Transform:
   m_ObjectHideFlags: 0
@@ -161,14 +146,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884963}
-  m_LocalRotation: {x: -0.28948757, y: 0.6012778, z: 0.34236693, w: 0.6613977}
-  m_LocalPosition: {x: -0.655, y: 0.48, z: -0.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.4197078, y: 0.16716479, z: -0.0013213375, w: 0.89213204}
+  m_LocalPosition: {x: 0.373, y: 3.419, z: -5.265}
+  m_LocalScale: {x: 1.9458, y: 1.9458, z: 1.9458}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 721872356}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -52.622, y: 79.625, z: 9.937}
+  m_LocalEulerAnglesHint: {x: -48.454, y: 26.833, z: -12.423}
 --- !u!1001 &20427284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2858,7 +2843,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-287498
+  m_Name: pb_Mesh-77458
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3105,7 +3090,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71080
+  m_Name: pb_Mesh59412
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3582,7 +3567,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71148
+  m_Name: pb_Mesh59482
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10655,7 +10640,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71000
+  m_Name: pb_Mesh59330
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10916,7 +10901,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71196
+  m_Name: pb_Mesh59530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12097,7 +12082,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1386216405}
-  - component: {fileID: 1386216404}
   m_Layer: 0
   m_Name: 'Recipe Paper Rest Transform '
   m_TagString: Untagged
@@ -12105,20 +12089,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1386216404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386216403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15db59e6b46a4048ac485c42ffd6af9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trans_pickedUp: {fileID: 1386216405}
-  trans_rest: {fileID: 0}
 --- !u!4 &1386216405
 Transform:
   m_ObjectHideFlags: 0
@@ -12126,14 +12096,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386216403}
-  m_LocalRotation: {x: -0, y: 0.8697853, z: -0, w: 0.49343044}
-  m_LocalPosition: {x: -0.334, y: 0.027000003, z: -0.492}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.26612455, z: -0, w: 0.9639387}
+  m_LocalPosition: {x: 1.15, y: 2.35, z: -4.79}
+  m_LocalScale: {x: 1.9458, y: 1.9458, z: 1.9458}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 721872356}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 120.867, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30.868, z: 0}
 --- !u!1 &1391823159
 GameObject:
   m_ObjectHideFlags: 0
@@ -15093,7 +15063,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71310
+  m_Name: pb_Mesh59644
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15605,14 +15575,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690012409}
-  m_LocalRotation: {x: -0.7064912, y: -0, z: -0, w: 0.70772195}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -0.07164958, y: 0.03218695, z: 0.6441726}
   m_LocalScale: {x: 0.21334, y: 0.21334009, z: 0.21334009}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 721872356}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -89.905, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
 --- !u!23 &1690012417
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15851,7 +15821,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh71094
+  m_Name: pb_Mesh59426
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
