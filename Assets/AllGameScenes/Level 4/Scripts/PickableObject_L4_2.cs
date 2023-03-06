@@ -1,7 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
+
+//the base class for all items in level4
+//base class addlistner to HandManager.cs
+//remove listner in HandManager.cs when put down; 
+//update is not allowed. Only hand manager can update.
+//virtual class that should be override: 
+//public override void updateBehavior()
+//{
+//    base.updateBehavior();
+//}
+//public override void clickBehavior()
+//{
+//    base.clickBehavior();
+//}
+
+
 
 public class PickableObject_L4_2 : MonoBehaviour
 {
@@ -12,6 +27,14 @@ public class PickableObject_L4_2 : MonoBehaviour
     private void Awake()
     {
         handManager = GameObject.Find("HandManager").GetComponent<HandManager_L4>();
+    }
+
+    private void Start()
+    {
+        if(pickUpTransform == null)
+        {
+            pickUpTransform = this.transform;
+        }
     }
 
     public virtual void updateBehavior()
@@ -38,11 +61,18 @@ public class PickableObject_L4_2 : MonoBehaviour
     public void putDown()
     {
         Debug.Log("Base put down");
+        putDownBehavior();
         isActive = false;
         canUpdate = false; 
         handManager.clickEvent.RemoveListener(clickBehavior);
         handManager.ActiveObjectUpdateEvent.RemoveListener(updateBehavior);
         handManager.putDownObj(); 
+    }
+
+    public virtual void putDownBehavior()
+    {
+
+
     }
      
 

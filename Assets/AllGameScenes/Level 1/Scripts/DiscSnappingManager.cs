@@ -33,7 +33,7 @@ public class DiscSnappingManager : MonoBehaviour
             currentPT.curve = snappingCurve; 
             currentDB.dragEndEvent.AddListener(currentPT.checkSnappingDistance);
 
-            print("add listenneer");
+            //print("add listenneer");
         }
 
     }
@@ -41,7 +41,7 @@ public class DiscSnappingManager : MonoBehaviour
 
     public void checkDistance(int index)
     {
-        print("Checking Distance");
+        //print("Checking Distance");
         PiecesTransform self = childPiecesTransform[index];
         for(int i = 0; i < childPiecesTransform.Length; i++)
         {
@@ -51,10 +51,10 @@ public class DiscSnappingManager : MonoBehaviour
             if (target.needToCheckDistance() == false) continue; 
 
             distance = (self.position - target.position).magnitude;
-            Debug.Log("Distance to " + i + ": " + distance);
+            //Debug.Log("Distance to " + i + ": " + distance);
             if (distance < snapDistance)
             {
-                Debug.Log("Snapping " + i + " to " + index);
+                //Debug.Log("Snapping " + i + " to " + index);
                 self.onSnapEnter();
                 target.beSnappedTo(self.GetComponent<Transform>());
 

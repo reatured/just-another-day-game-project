@@ -22,30 +22,21 @@ public class PO_TP_KnifeBehavior_L4_2 : PO_ToolProperty_L4_2
 
     public override void toolUpdate()
     {
-
         base.toolUpdate();
         Vector3 tempPos = transform.position;
         tempPos.y += knifePickUpHeight;
         tempPos += choppingOffset;
         transform.position = tempPos;
-
-        Debug.DrawRay(Camera.main.transform.position, this.transform.position - Camera.main.transform.position, Color.green, 2, false);
     }
 
     public override void clickBehavior()
     {
         base.clickBehavior();
-
-
-
-
         if (!isChopping)
         {
             isChopping = true;
             StartCoroutine(chop());
         }
-        
-
     }
 
     IEnumerator chop()

@@ -3,17 +3,37 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+//class that should be overrided:
+//public override void initiatePlane()
+//{
+//    base.initiatePlane();
+//}
+//public override void toolUpdate()
+//{
+//    base.toolUpdate();
+//}
+
+//public override void clickBehavior()
+//{
+//    base.clickBehavior();
+//}
 public class PO_ToolProperty_L4_2 : PickableObject_L4_2
 {
     //protected Vector3 screenPoint;
     //protected Vector3 offset;
     public float putBackAreaSize = 0.35f;
     public Plane toolMovementPlane;
-    public Collider knifeHolderCollider; 
-
+    public Collider toolMovementCollider;
+    public Collider holderCollider;
+    public virtual void initiatePlane()
+    {
+        //Modify in Knife Class
+    }
     //1. onMouseDown(Pick Up)!: 
     // Base Class -> pickedUp(); 
     // Tool Class -> pickUpObject(); 
+
+
     private void OnMouseDown()
     {
         Debug.Log("```````Mouse Down");
@@ -31,7 +51,10 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
         initiatePlane();
         Debug.Log("Set up restTransform");
         copyTransform(this.transform, restTransform);
-
+        if(toolMovementCollider != null)
+        {
+            toolMovementCollider.gameObject.SetActive(true);
+        }
         if (handManager.objectInHand == null)
         {
             handManager.pickUpObject(this.gameObject);
@@ -46,13 +69,12 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
 
     public void lerpToPickUpTransform()
     {
+
         pickUpTransform.position = getImpactPoint();
+        print(pickUpTransform.position);
         copyTransform(pickUpTransform, this.transform);
     }
-    public virtual void initiatePlane()
-    {
-        //Modify in Knife Class
-    }
+
 
     //2. Update 
     //Hand Manager -> pickable script (base) -> here -> knife class
@@ -72,14 +94,15 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     public void followMouse()
     {
 
-        Vector3 newPosition = getImpactPoint(); 
+        Vector3 newPosition = getImpactPoint();
+
         transform.position = newPosition;
 
         if (Input.GetMouseButtonDown(0))
         {
 
             ray = getRay(Camera.main.transform, transform);
-            if(knifeHolderCollider.Raycast(ray, out hit, 100f)){
+            if(holderCollider.Raycast(ray, out hit, 100f)){
                 copyTransform(restTransform, transform);
                 Cursor.visible = true;
                 putDown();
@@ -100,6 +123,16 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     {
         float enter = 0f;
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if(toolMovementCollider!= null)
+        {
+            if (toolMovementCollider.Raycast(ray, out hit, 100))
+            {
+                impactPoint = hit.point;
+                return impactPoint;
+            }
+                
+        }
         if (toolMovementPlane.Raycast(ray, out enter))
         {
             impactPoint = ray.GetPoint(enter);
@@ -115,13 +148,15 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     public override void clickBehavior()
     {
         base.clickBehavior();
-      
     }
 
-    private void OnTriggerStay(Collider other)
+    public override void putDownBehavior()
     {
-        
-        
+        base.putDownBehavior();
+        if(toolMovementCollider != null)
+        {
+            toolMovementCollider.gameObject.SetActive(false);
+        }
     }
 
     //__________________Helper Functions
@@ -130,6 +165,6 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
         to.position = from.position;
         to.rotation = from.rotation;
         to.localScale = from.localScale;
-        print(to.position);
+        print("Copy Transform: "+ to.position);
     }
 }

@@ -106,7 +106,7 @@ public class DraggingBehavior : MonoBehaviour
 
     public void onDragEnd()
     {
-        print("drag End");
+
         dragState = false;
         dragEndEvent.Invoke();
         

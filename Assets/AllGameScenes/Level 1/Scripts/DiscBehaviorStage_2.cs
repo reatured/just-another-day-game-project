@@ -21,7 +21,7 @@ public class DiscBehaviorStage_2 : MonoBehaviour
 
         Vector3 startingPosition = globalValue.stage1RecordPosition;
  
-        startingPosition.y = 0f;
+        //startingPosition.y = 0f;
         this.transform.position = startingPosition;
 
         

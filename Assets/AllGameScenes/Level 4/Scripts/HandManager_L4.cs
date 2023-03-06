@@ -32,7 +32,7 @@ public class HandManager_L4 : MonoBehaviour
             ActiveObjectUpdateEvent.Invoke();
         } 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))//avoid pick up and clickbehavior to be called in the same frame.
         {
             if (pickableScript.canUpdate != pickableScript.isActive)
             {

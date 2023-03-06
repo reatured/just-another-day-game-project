@@ -7,6 +7,7 @@ public class DragObjectOnPlane_L5 : MonoBehaviour
 {
     Vector3 offset;
     Plane movementPlane;
+    public Vector3 planeNormal;
     protected Ray ray;
 
     public Transform receiver;
@@ -14,7 +15,7 @@ public class DragObjectOnPlane_L5 : MonoBehaviour
 
     public bool isActive = false;
 
-    public Vector3 planeNormal;
+    
     private void OnMouseDown()
     {
         print("Mouse Down");
