@@ -81,7 +81,7 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     public override void updateBehavior()
     {
         base.updateBehavior();
-        
+
         //Debug.Log("Tool Class");
         toolUpdate();
     }
@@ -95,7 +95,7 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
     {
 
         Vector3 newPosition = getImpactPoint();
-
+        //print("New Position: " + newPosition);
         transform.position = newPosition;
 
         if (Input.GetMouseButtonDown(0))
@@ -104,44 +104,21 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
             ray = getRay(Camera.main.transform, transform);
             if(holderCollider.Raycast(ray, out hit, 100f)){
                 copyTransform(restTransform, transform);
+
                 Cursor.visible = true;
                 putDown();
             }
         }
     }
-    
-    public Ray getRay(Transform obj1, Transform obj2)
+    public override void putDownBehavior()
     {
-        return new Ray(obj1.position, obj2.position - obj1.position);
-    }
-
-    Ray ray;
-    RaycastHit hit;
-    public Vector3 impactPoint; 
-
-    public Vector3 getImpactPoint()
-    {
-        float enter = 0f;
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if(toolMovementCollider!= null)
+        print("put down in 2nd level");
+        base.putDownBehavior();
+        if (toolMovementCollider != null)
         {
-            if (toolMovementCollider.Raycast(ray, out hit, 100))
-            {
-                impactPoint = hit.point;
-                return impactPoint;
-            }
-                
+            toolMovementCollider.gameObject.SetActive(false);
         }
-        if (toolMovementPlane.Raycast(ray, out enter))
-        {
-            impactPoint = ray.GetPoint(enter);
-
-        }
-           
-        return impactPoint;
     }
-
 
     //3. Mouse Clicked:: Click Behavior::
 
@@ -150,14 +127,7 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
         base.clickBehavior();
     }
 
-    public override void putDownBehavior()
-    {
-        base.putDownBehavior();
-        if(toolMovementCollider != null)
-        {
-            toolMovementCollider.gameObject.SetActive(false);
-        }
-    }
+    
 
     //__________________Helper Functions
     void copyTransform(Transform from, Transform to)
@@ -166,5 +136,37 @@ public class PO_ToolProperty_L4_2 : PickableObject_L4_2
         to.rotation = from.rotation;
         to.localScale = from.localScale;
         print("Copy Transform: "+ to.position);
+    }
+
+    public Ray getRay(Transform obj1, Transform obj2)
+    {
+        return new Ray(obj1.position, obj2.position - obj1.position);
+    }
+
+    Ray ray;
+    RaycastHit hit;
+    public Vector3 impactPoint;
+
+    public Vector3 getImpactPoint()
+    {
+        float enter = 0f;
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (toolMovementCollider != null)
+        {
+            if (toolMovementCollider.Raycast(ray, out hit, 100))
+            {
+                impactPoint = hit.point;
+                return impactPoint;
+            }
+
+        }
+        if (toolMovementPlane.Raycast(ray, out enter))
+        {
+            impactPoint = ray.GetPoint(enter);
+
+        }
+
+        return impactPoint;
     }
 }

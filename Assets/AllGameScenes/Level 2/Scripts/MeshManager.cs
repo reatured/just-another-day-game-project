@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
-using Unity.VisualScripting;
-using UnityEngine.UIElements;
+
+//Install needles on the model, and move the vertices.
 
 public class MeshManager : MonoBehaviour
 {
