@@ -1,9 +1,8 @@
 # Just Another Day
 
 **A narrative-driven indie game about routine, memory, and the quiet unraveling of the self.**  
-Developed solo by [Lingyi Zhou](https://github.com/reatured), *Just Another Day* blends emotional storytelling with diverse, symbolic gameplay to tell a haunting story buried within the mundane.
+Developed solo by [Lingyi Zhou](https://lingyizhou.com), *Just Another Day* blends emotional storytelling with diverse, symbolic gameplay to tell a haunting story buried within the mundane.
 
-[Play on GitHub](https://github.com/reatured/Just-Another-Day)  
 [Download on Itch.io](https://reatured.itch.io/just-another-day)  
 *Thesis Project • Unity Engine • 2022–2023*
 
